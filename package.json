@@ -1,0 +1,27 @@
+{
+  "name": "communication_ms",
+  "version": "1.0.0",
+  "description": "",
+  "main": "init-mongo.js",
+  "scripts": {
+    "devStart": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UN-Uber/communication_ms.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/UN-Uber/communication_ms/issues"
+  },
+  "homepage": "https://github.com/UN-Uber/communication_ms#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^6.0.13"
+  },
+  "devDependencies": {
+    "dotenv": "^10.0.0",
+    "nodemon": "^2.0.15"
+  }
+}
