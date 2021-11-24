@@ -13,7 +13,7 @@ app.use(express.json())
 
 const chatsRouter= require('./src/routes/chat_sessions_routes')
 const messagesRouter= require('./src/routes/messages_routes')
-app.use('/communications/chat', chatsRouter)
-app.use('/communications/message', messagesRouter)
+app.use('/chat', chatsRouter)
+app.use('/message', messagesRouter)
 
 app.listen(3000, ()=> console.log('Server Started'))

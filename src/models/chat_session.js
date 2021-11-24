@@ -17,7 +17,11 @@ const chatSessionSchema= new mongoose.Schema({
     state: {
         type: String,
         required: true
-    }
+    },
+    messages: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Message'
+    }]
 })
 
 module.exports= mongoose.model('ChatSession', chatSessionSchema)

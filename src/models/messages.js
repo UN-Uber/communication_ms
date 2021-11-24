@@ -1,9 +1,9 @@
 const mongoose= require('mongoose')
 
 const messagesSchema= new mongoose.Schema({
-    session_id: {
-        type: Number,
-        required: true 
+    session: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'ChatSession'
     },
     sender_type: {
         type: String,

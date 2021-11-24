@@ -14,7 +14,7 @@ router.get('/', async (req, resp)=> {
 
 // Get one chat session by id
 router.get('/:id', getChat, (req, resp)=> {
-    resp.send(resp.chat.state)
+    resp.send(resp.chat)
 })
 
 // Create new chat session
@@ -48,7 +48,6 @@ router.patch('/:id', getChat, async (req, resp)=> {
     }
 })
 
-
 // Delete chat session
 router.delete('/:id', getChat, async (req, resp)=> {
     try {
@@ -59,10 +58,16 @@ router.delete('/:id', getChat, async (req, resp)=> {
     }
 })
 
+// Get all messages in a chat session
+router.get('/messages/:id', getChat, async(req, resp)=>{
+    const messages= resp.chat
+    resp.json(messages.messages)
+})
+
 // Middleware to get chat session by id
 async function getChat(req, resp, next){
     try {
-        chat= await ChatSession.findById(req.params.id)
+        chat= await ChatSession.findById(req.params.id).populate('messages')
 
         if (chat == null) {
             return resp.status(404).json({message: 'No se pudo hallar la sesión de chat'})
