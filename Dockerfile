@@ -1,11 +1,14 @@
 FROM node:lts
 
-WORKDIR /app
-COPY ./package*.json ./
-RUN npm ci
-COPY . .
-RUN chown -R node:node /app
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
+COPY package*.json /usr/src/app/
+RUN npm install
+
+COPY . /usr/src/app/
+RUN chown -R node:node /usr/src/app/
 USER node
 
-EXPOSE 3000
-CMD npm start
+EXPOSE 8080
+CMD npm run start

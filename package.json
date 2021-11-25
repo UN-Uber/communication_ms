@@ -1,16 +1,16 @@
 {
   "name": "communication_ms",
   "version": "1.0.0",
-  "description": "",
-  "main": "init-mongo.js",
+  "description": "Communication ms for UN-Uber",
+  "main": "server.js",
   "scripts": {
-    "devStart": "nodemon server.js"
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/UN-Uber/communication_ms.git"
   },
-  "author": "",
+  "author": "Daniel Alejandro Melo",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/UN-Uber/communication_ms/issues"
