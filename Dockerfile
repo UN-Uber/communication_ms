@@ -1,4 +1,4 @@
-FROM node:lts
+FROM node:17-alpine3.12
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
@@ -10,5 +10,4 @@ COPY . /usr/src/app/
 RUN chown -R node:node /usr/src/app/
 USER node
 
-EXPOSE 8080
 CMD npm run start
