@@ -1,6 +1,5 @@
 const express= require('express')
 const router= express.Router()
-const Message= require('../models/messages')
 const ChatSession= require('../models/chat_session')
 
 // Get all the chat session
@@ -42,7 +41,7 @@ router.patch('/:id', getChat, async (req, resp)=> {
     }
 
     try {
-        const updated_chat= await resp.chat.save()
+        const updated_chat= await resp.chat.seve()
         resp.json(updated_chat)
     } catch (err) {
         resp.status(400).json({message: err.message})
@@ -52,12 +51,7 @@ router.patch('/:id', getChat, async (req, resp)=> {
 // Delete chat session
 router.delete('/:id', getChat, async (req, resp)=> {
     try {
-        await Message.deleteMany({
-            '_id': {
-                $in: resp.chat.messages
-            }
-        })
-        await resp.chat.deleteOne()
+        await resp.chat.remove()
         resp.json({message: 'Sesión de chat eliminada'})
     } catch (err) {
         resp.status(500).json({message: err.message})
@@ -66,14 +60,14 @@ router.delete('/:id', getChat, async (req, resp)=> {
 
 // Get all messages in a chat session
 router.get('/messages/:id', getChat, async(req, resp)=>{
-    const messages= resp.chat.populate('messages')
+    const messages= resp.chat
     resp.json(messages.messages)
 })
 
 // Middleware to get chat session by id
 async function getChat(req, resp, next){
     try {
-        chat= await ChatSession.findById(req.params.id)
+        chat= await ChatSession.findById(req.params.id).populate('messages')
 
         if (chat == null) {
             return resp.status(404).json({message: 'No se pudo hallar la sesión de chat'})
