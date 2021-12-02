@@ -8,7 +8,7 @@ Functions
 - Get all the messages sent to a especific chat session
 
 Architecture
-- Javascript microservice build using MVC architecture
-- NoSQL database with MongoDB
+- Javascript microservice build using Layered architecture
+- NoSQL database with MongoDB deployed in MongoDB Atlas
 - NodeJS, Express, DotEnv, Mongoose and Nodemon as frameworks
-- Rest API
+- Rest API deployed in Google Cloud using docker
